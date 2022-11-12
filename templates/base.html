@@ -12,7 +12,7 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body>
+<body {% block body-class%}class="body-class" {% endblock %}>
   <div class="container-fluid">
     <div class="row ">
       <div class="col-sm-2 content">
@@ -22,17 +22,19 @@
 
       </div>
       <div class="col-sm-6 content">
-        {% block content %}
+        <div class="content-test">
+          {% block content %}
 
-        {% endblock %}
-        {% block pagination %}
-          {% include "includes/pagination.html" %}
-        {% endblock %}
+          {% endblock %}
+          {% block pagination %}
+            {% include "includes/pagination.html" %}
+          {% endblock %}
+        </div>
       </div>
       <div class="col-sm-2 content">
-        Rigth sidebar
-        <br>
-        Place Holder
+        {% block sidebar_right %}
+          {% include "includes/sidebar_rigth.html" %}
+        {% endblock %}
       </div>
     </div>
   </div>

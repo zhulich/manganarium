@@ -1,5 +1,5 @@
 SideBar
-<ul class="sidebar-nav content">
+<ul class="sidebar-nav-left content">
   {% if user.is_authenticated %}
     <li>User: {{ user.username }}</li>
     <li><a href="{% url 'logout' %}">Log out</a></li>
