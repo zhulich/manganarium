@@ -4,4 +4,11 @@
   <h1>{{ translated_manga_detail.translated_title }} it's manga in {{ translated_manga_detail.translator.language }} language</h1>
   <p>Original story {{ translated_manga_detail.original_title }} by {{ translated_manga_detail.original_title.mangaka }}</p>
   <p>By {{ translated_manga_detail.translator }}
+  <p>Another translation
+      {% for manga in translated_manga_detail.original_title.original.all %}
+        {% if manga.id != translated_manga_detail.id %}
+          <li>{{ manga.translated_title }}</li>
+        {% endif %}
+      {% endfor %}
+  </p>
 {% endblock %}
