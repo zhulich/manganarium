@@ -3,8 +3,13 @@
 {% block content %}
   <h1>Translator: {{ translator.username }}</h1>
   <p>Translate from japans to {{ translator.language }}</p>
+  <p>Staff: {{ translator.is_staff }}</p>
   <p>Works:
+  {% if  translator.translated.all%}
     {% for manga in translator.translated.all %}
       <li>{{ manga.translated_title }}({{ manga.original_title }})</li>
     {% endfor %}
+  {% else %}
+    <p>This user still didn't add his works</p>
+  {% endif %}
 {% endblock %}

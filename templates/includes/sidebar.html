@@ -4,6 +4,7 @@ SideBar
     <li>User: {{ user.username }}</li>
     <li><a href="{% url 'logout' %}">Log out</a></li>
   {% else %}
+    <li><a style="float: right" href="{% url 'catalog:translator-create' %}">Registration</a></li>
     <li><a href="{% url 'login' %}">Login</a></li>
   {% endif %}
 

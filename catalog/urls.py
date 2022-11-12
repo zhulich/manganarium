@@ -1,7 +1,11 @@
 from django.urls import path
 
 from catalog.views import index, GenreListView, MangaListView, TranslatorListView, TranslatedMangaListView, \
-    MangaDetailView, TranslatorDetailView, TranslatedMangaDetailView, GenreCreateView, GenreUpdateView, GenreDeleteView
+    MangaDetailView, TranslatorDetailView, TranslatedMangaDetailView, GenreCreateView, GenreUpdateView, GenreDeleteView, \
+    TranslatorCreateView
+
+
+
 
 urlpatterns = [
     path("", index, name="index"),
@@ -12,6 +16,7 @@ urlpatterns = [
     path("mangas/", MangaListView.as_view(), name="manga-list"),
     path("mangas/<int:pk>/", MangaDetailView.as_view(), name="manga-detail"),
     path("translators/", TranslatorListView.as_view(), name="translator-list"),
+    path("translators/create/", TranslatorCreateView.as_view(), name="translator-create"),
     path("translators/<int:pk>/", TranslatorDetailView.as_view(), name="translator-detail"),
     path("transleted/", TranslatedMangaListView.as_view(), name="translated-manga-list"),
     path("transleted/<int:pk>/", TranslatedMangaDetailView.as_view(), name="translated-manga-detail"),

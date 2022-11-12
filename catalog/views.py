@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 
+from catalog.forms import TranslatorFrom, TranslatorCreationFrom
 from catalog.models import Translator, Manga, TranslatedManga, Genre
 
 
@@ -69,6 +70,12 @@ class TranslatorListView(generic.ListView):
 
 class TranslatorDetailView(generic.DetailView):
     model = Translator
+
+
+class TranslatorCreateView(generic.CreateView):
+    model = Translator
+    form_class = TranslatorCreationFrom
+    success_url = reverse_lazy("catalog:translator-list")
 
 
 class TranslatedMangaListView(generic.ListView):
