@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Manga List</h1>
+  <h1>
+    Manga List
+    <a style="float: right" href="{% url 'catalog:manga-create' %}">Create</a>
+  </h1>
   {% if manga_list %}
     <ul>
       {% for manga in manga_list %}
