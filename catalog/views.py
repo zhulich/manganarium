@@ -48,7 +48,7 @@ class TranslatorListView(generic.ListView):
 
 
 class TranslatorDetailView(generic.DetailView):
-    model = Manga
+    model = Translator
 
 
 class TranslatedMangaListView(generic.ListView):
@@ -59,6 +59,6 @@ class TranslatedMangaListView(generic.ListView):
 
 
 class TranslatedMangaDetailView(generic.DetailView):
-    model = Manga
+    model = TranslatedManga
     template_name = "catalog/translated_manga_detail.html"
     context_object_name = "translated_manga_detail"
