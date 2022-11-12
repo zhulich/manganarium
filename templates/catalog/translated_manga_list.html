@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Translated Manga List</h1>
+  <h1>
+    Translated Manga List
+    <a href="{% url 'catalog:translated-manga-create' %}">Create manga</a>
+  </h1>
   {% if translated_manga_list %}
     <ul>
       {% for translated in translated_manga_list %}

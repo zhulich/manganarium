@@ -45,13 +45,10 @@ class GenreCreateView(LoginRequiredMixin, generic.CreateView):
 class GenreUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Genre
     fields = "__all__"
-    success_url = reverse_lazy("catalog:genre-list")
 
 
 class GenreDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Genre
-    fields = "__all__"
-    success_url = reverse_lazy("catalog:genre-list")
 
 
 class MangaListView(generic.ListView):
@@ -75,8 +72,6 @@ class MangaUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class MangaDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Manga
-    fields = "__all__"
-    success_url = reverse_lazy("catalog:manga-list")
 
 
 class TranslatorListView(generic.ListView):
@@ -105,3 +100,25 @@ class TranslatedMangaDetailView(generic.DetailView):
     model = TranslatedManga
     template_name = "catalog/translated_manga_detail.html"
     context_object_name = "translated_manga_detail"
+
+
+class TranslatedMangaCreateView(LoginRequiredMixin, generic.CreateView):
+    model = TranslatedManga
+    fields = "__all__"
+    template_name = "catalog/translated_manga_form.html"
+    success_url = reverse_lazy("catalog:translated-manga-list")
+
+
+class TranslatedMangaUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = TranslatedManga
+    fields = "__all__"
+    template_name = "catalog/translated_manga_form.html"
+    success_url = reverse_lazy("catalog:translated-manga-list")
+
+
+class TranslatedMangaDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = TranslatedManga
+    template_name = "catalog/translated_manga_confirm_delete.html"
+
+
+

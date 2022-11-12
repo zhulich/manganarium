@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ translated_manga_detail.translated_title }} it's manga in {{ translated_manga_detail.translator.language }} language</h1>
+  <h1>
+    {{ translated_manga_detail.translated_title }} it's manga in {{ translated_manga_detail.translator.language }} language
+    {% if user.id == translated_manga_detail.translator.id %}
+      <a style="float: right" href="{% url 'catalog:translated-manga-delete' pk=translated_manga_detail.id%}">delete</a>
+      <a style="float: right" href="{% url 'catalog:translated-manga-update' pk=translated_manga_detail.id%}">Update</a>
+    {% endif %}
+  </h1>
   <p>Original story {{ translated_manga_detail.original_title }} by {{ translated_manga_detail.original_title.mangaka }}</p>
   <p>By {{ translated_manga_detail.translator }}
   <p>Another translation

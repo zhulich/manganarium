@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from catalog.models import Translator, Manga, Genre
+from django.contrib.auth.models import User
+
+from catalog.models import Translator, Manga, Genre, TranslatedManga
 
 
 class TranslatorCreationFrom(UserCreationForm):
@@ -25,3 +27,5 @@ class MangaForm(forms.ModelForm):
     class Meta:
         model = Manga
         fields = "__all__"
+
+
