@@ -1,4 +1,6 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 
 from catalog.models import Translator, Manga, TranslatedManga, Genre
@@ -31,6 +33,24 @@ def index(request):
 class GenreListView(generic.ListView):
     model = Genre
     paginate_by = 2
+
+
+class GenreCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Genre
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:genre-list")
+
+
+class GenreUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Genre
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:genre-list")
+
+
+class GenreDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Genre
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:genre-list")
 
 
 class MangaListView(generic.ListView):
