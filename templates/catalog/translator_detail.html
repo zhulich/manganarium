@@ -5,6 +5,6 @@
   <p>Translate from japans to {{ translator.language }}</p>
   <p>Works:
     {% for manga in translator.translated.all %}
-      <li>{{ manga.translated_title }},</li>
+      <li>{{ manga.translated_title }}({{ manga.original_title }})</li>
     {% endfor %}
 {% endblock %}

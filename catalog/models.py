@@ -48,7 +48,7 @@ class Manga(models.Model):
 
 class TranslatedManga(models.Model):
     translated_title = models.CharField(max_length=255, unique=True)
-    original_title = models.ForeignKey(to=Manga, on_delete=models.SET("unknown"), related_name="translated", null=True)
+    original_title = models.ForeignKey(to=Manga, on_delete=models.SET("unknown"), related_name="original", null=True)
     translator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET("unknown"), related_name="translated", null=True)
 
     class Meta:
