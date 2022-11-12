@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Translator: {{ translator.username }}</h1>
+  <p>Translate from japans to {{ translator.language }}</p>
+  <p>Works:
+    {% for manga in translator.translated.all %}
+      <li>{{ manga.translated_title }},</li>
+    {% endfor %}
+{% endblock %}

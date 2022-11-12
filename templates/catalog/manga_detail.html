@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Manga: {{ manga.title }}({{ manga.year }})</h1>
+  <p>Created by: {{ manga.mangaka }}</p>
+  <p>Include: {{ manga.chapters }} chapters</p>
+  <p>Genres:
+    {% for genre in manga.genre.all %}
+      {{ genre.name }},
+    {% endfor %}
+  </p>
+  <p>Translated variant:
+    {% for translated in manga.original.all %}
+      <li>{{ translated.translated_title }} by {{ translated.translator }}</li>
+    {% endfor %}
+  </p>
+{% endblock %}

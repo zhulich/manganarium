@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ translated_manga_detail.translated_title }} it's manga in {{ translated_manga_detail.translator.language }} language</h1>
+  <p>Original story {{ translated_manga_detail.original_title }} by {{ translated_manga_detail.original_title.mangaka }}</p>
+  <p>By {{ translated_manga_detail.translator }}
+{% endblock %}
