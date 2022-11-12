@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Translated Manga List</h1>
+  {% if translated_manga_list %}
+    <ul>
+      {% for translated in translated_manga_list %}
+        <li>
+          <a href="#">{{ translated.translated_title }}({{ translated.original_title }})</a>
+          Translated by: {{ translated.translator }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>the are no mangas</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Manga List</h1>
+  {% if manga_list %}
+    <ul>
+      {% for manga in manga_list %}
+        <li>
+          <a href="#">{{ manga.title }}</a>
+          ({{ manga.year }}) Created by:{{ manga.mangaka }}. Include {{ manga.chapters }} chapters. Genres:
+          {% for genre in manga.genre.all %}
+            {{ genre.name }},
+          {% endfor %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>the are no mangas</p>
+  {% endif %}
+{% endblock %}

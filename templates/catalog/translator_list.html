@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Translator List</h1>
+  {% if translator_list %}
+    <ul>
+      {% for translator in translator_list %}
+        <li>
+          <a href="#">{{ translator.username }}({{ translator.language }})</a>
+          Projects:
+          {% for translate in translator.translated.all %}
+            {{ translate.translated_title }},
+          {% endfor %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>the are no mangas</p>
+  {% endif %}
+{% endblock %}
