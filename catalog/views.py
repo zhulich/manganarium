@@ -14,7 +14,7 @@ def index(request):
     num_manga = Manga.objects.count()
     num_translated = TranslatedManga.objects.count()
 
-    num_visits = request.session.get("num_visits", 0)
+    num_visits = request.session.get("num_visits", 1)
     request.session["num_visits"] = num_visits + 1
 
     context = {
@@ -22,7 +22,7 @@ def index(request):
         "num_translator": num_translator,
         "num_manga": num_manga,
         "num_translated": num_translated,
-        "num_visits": num_visits + 1,
+        "num_visits": num_visits,
     }
 
     return render(request, "catalog/index.html", context=context)
@@ -30,3 +30,35 @@ def index(request):
 
 class GenreListView(generic.ListView):
     model = Genre
+    paginate_by = 2
+
+
+class MangaListView(generic.ListView):
+    model = Manga
+    queryset = Manga.objects.prefetch_related("genre")
+
+
+class MangaDetailView(generic.DetailView):
+    model = Manga
+
+
+class TranslatorListView(generic.ListView):
+    model = Translator
+#    queryset = Translator.objects.select_related("translated")
+
+
+class TranslatorDetailView(generic.DetailView):
+    model = Manga
+
+
+class TranslatedMangaListView(generic.ListView):
+    model = TranslatedManga
+    template_name = "catalog/translated_manga_list.html"
+    context_object_name = "translated_manga_list"
+    queryset = TranslatedManga.objects.select_related("original_title", "translator")
+
+
+class TranslatedMangaDetailView(generic.DetailView):
+    model = Manga
+    template_name = "catalog/translated_manga_detail.html"
+    context_object_name = "translated_manga_detail"
