@@ -6,7 +6,7 @@
     <ul>
       {% for translator in translator_list %}
         <li>
-          <a href="#">{{ translator.username }}({{ translator.language }})</a>
+          <a href="{% url 'catalog:translator-detail' pk=translator.id%}">{{ translator.username }}({{ translator.language }})</a>
           Projects:
           {% for translate in translator.translated.all %}
             {{ translate.translated_title }},

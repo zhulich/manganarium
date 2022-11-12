@@ -6,7 +6,7 @@
     <ul>
       {% for translated in translated_manga_list %}
         <li>
-          <a href="#">{{ translated.translated_title }}({{ translated.original_title }})</a>
+          <a href="{% url 'catalog:translated-manga-detail' pk=translated.id%}">{{ translated.translated_title }}({{ translated.original_title }})</a>
           Translated by: {{ translated.translator }}
         </li>
       {% endfor %}

@@ -6,7 +6,7 @@
     <ul>
       {% for manga in manga_list %}
         <li>
-          <a href="#">{{ manga.title }}</a>
+          <a href="{% url 'catalog:manga-detail' pk=manga.id %}">{{ manga.title }}</a>
           ({{ manga.year }}) Created by:{{ manga.mangaka }}. Include {{ manga.chapters }} chapters. Genres:
           {% for genre in manga.genre.all %}
             {{ genre.name }},
