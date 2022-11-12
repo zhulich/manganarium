@@ -2,7 +2,7 @@ SideBar
 <ul class="sidebar-nav">
   <li><a href="{% url 'catalog:index' %}">Home</a></li>
   <li><a href="{% url 'catalog:genre-list' %}">Genres</a></li>
-  <li><a href="#">Mangas</a></li>
-  <li><a href="#">Translated</a></li>
-  <li><a href="#">Translators</a></li>
+  <li><a href="{% url 'catalog:manga-list' %}">Mangas</a></li>
+  <li><a href="{% url 'catalog:translator-list' %}">Translators</a></li>
+  <li><a href="{% url 'catalog:translated-manga-list' %}">Translated</a></li>
 </ul>
