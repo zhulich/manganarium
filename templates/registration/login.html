@@ -13,13 +13,12 @@
     <p>Please login to see this page.</p>
   {% endif %}
 
-  <form method="post" action="{% url 'login' %}">
+  <form class="form-l" method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {{ form|crispy }}
 
-    <input type="submit" value="Login" class="btn btn-primary" />
+    <input type="submit" value="Login" class="btn btn-submit" />
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
 {% endblock %}
-
