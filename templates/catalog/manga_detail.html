@@ -4,7 +4,7 @@
   <h1>
     Manga: {{ manga.title }}({{ manga.year }})
     <a style="float: right" href="{% url 'catalog:manga-update' pk=manga.id%}">Update</a>
-    <a style="float: right" href="{% url 'catalog:manga-delete' pk=manga.id%}">delete</a>
+    <a style="float: right" href="{% url 'catalog:manga-delete' pk=manga.id%}">Delete</a>
   </h1>
   <p>Created by: {{ manga.mangaka }}</p>
   <p>Include: {{ manga.chapters }} chapters</p>

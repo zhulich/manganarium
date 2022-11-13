@@ -12,26 +12,24 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body {% block body-class%}class="body-class" {% endblock %}>
+<body>
   <div class="container-fluid">
     <div class="row ">
-      <div class="col-sm-2 content">
+      <div class="col-sm-2 sidebar-nav-left">
         {% block sidebar %}
           {% include "includes/sidebar.html" %}
         {% endblock %}
 
       </div>
       <div class="col-sm-6 content">
-        <div class="content-test">
-          {% block content %}
+        {% block content %}
 
-          {% endblock %}
-          {% block pagination %}
-            {% include "includes/pagination.html" %}
-          {% endblock %}
-        </div>
+        {% endblock %}
+        {% block pagination %}
+          {% include "includes/pagination.html" %}
+        {% endblock %}
       </div>
-      <div class="col-sm-2 content">
+      <div class="col-sm-2 sidebar-nav-right">
         {% block sidebar_right %}
           {% include "includes/sidebar_rigth.html" %}
         {% endblock %}
