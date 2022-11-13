@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <h1>
     Genres List
     <a style="float: right" href="{% url 'catalog:genre-create' %}">Create</a>
   </h1>
+
+  <form action="" method="get">
+    {{ search_form|crispy }}
+    <input type="submit">
+  </form>
+
   {% if genre_list %}
     <table class="table">
       <tr>
@@ -14,14 +21,10 @@
       {% for genre in genre_list %}
         <tr>
           <td>
-            <strong>{{ genre.name }}</strong>
-            <br>
-            <a href="{% url 'catalog:genre-update' pk=genre.id%}">Update</a>
-            <br>
-            <a href="{% url 'catalog:genre-delete' pk=genre.id%}">Delete</a>
+            <strong><a href="{% url 'catalog:genre-detail' pk=genre.id%}">{{ genre.name }}</a></strong>
           </td>
           <td>
-            {{ genre.description }}
+            {{ genre.description|slice:53 }}...
           </td>
         </tr>
       {% endfor %}

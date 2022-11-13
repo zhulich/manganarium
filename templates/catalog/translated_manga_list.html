@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <h1>
     Translated Manga List
     <a href="{% url 'catalog:translated-manga-create' %}">Create manga</a>
   </h1>
+
+  <form action="" method="get">
+    {{ search_form|crispy }}
+    <input type="submit">
+  </form>
+
   {% if translated_manga_list %}
     <ul>
       {% for translated in translated_manga_list %}

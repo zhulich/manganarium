@@ -29,3 +29,37 @@ class MangaForm(forms.ModelForm):
         fields = "__all__"
 
 
+class MangaSearchForm(forms.Form):
+    title = forms.CharField(
+        max_length=63,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by title..."})
+    )
+
+
+class TranslatedMangaSearchForm(forms.Form):
+    translated_title = forms.CharField(
+        max_length=63,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by title..."})
+    )
+
+
+class TranslatorSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=63,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by nickname..."})
+    )
+
+
+class GenreSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=63,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by genre..."})
+    )

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Manga: {{ genre.name }}
+    <a style="float: right" href="{% url 'catalog:genre-update' pk=genre.id%}">Update</a>
+    <a style="float: right" href="{% url 'catalog:genre-delete' pk=genre.id%}">Delete</a>
+  </h1>
+  <p>{{ genre.description }}</p>
+{% endblock %}
