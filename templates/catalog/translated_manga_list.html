@@ -23,13 +23,17 @@
       {% for translated in translated_manga_list %}
         <tr>
           <td>
-            <strong><a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=translated.id%}">{{ translated.translated_title }}</a></strong>
+            <strong><a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=translated.id%}">
+              {{ translated.translated_title }}
+            </a></strong>
           </td>
           <td>
-            <a class="text-link" href="{% url 'catalog:translator-detail' pk=translated.translator.id%}">{{ translated.translator }}</a>
+            <a class="text-link" href="{% url 'catalog:translator-detail' pk=translated.translator.id%}">
+              {{ translated.translator }}</a>
           </td>
           <td>
-            <a class="text-link" href="{% url 'catalog:manga-detail' pk=translated.original_title.id%}">{{ translated.original_title }}</a>
+            <a class="text-link" href="{% url 'catalog:manga-detail' pk=translated.original_title.id%}">
+              {{ translated.original_title }}</a>
           </td>
         </tr>
       {% endfor %}

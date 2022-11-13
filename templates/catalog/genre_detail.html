@@ -10,7 +10,11 @@
   <p>{{ genre.description }}</p>
   <p>We have such mangas with this genre:</p>
   {% for manga in genre.mangas.all %}
-    <ul><strong><a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=manga.id %}">"{{ manga.title }}"</a></strong></ul>
+    <ul>
+      <strong>
+        <a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=manga.id %}">"{{ manga.title }}"</a>
+      </strong>
+    </ul>
 
   {% endfor %}
 {% endblock %}

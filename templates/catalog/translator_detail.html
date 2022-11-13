@@ -8,9 +8,13 @@
   {% if  translator.translated.all%}
     {% for manga in translator.translated.all %}
       <ul>
-        <a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=manga.id%}">{{ manga.translated_title }}</a>
+        <a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=manga.id%}">
+          {{ manga.translated_title }}
+        </a>
         translated from
-        <a class="text-link" href="{% url 'catalog:manga-detail' pk=manga.original_title.id%}">{{ manga.original_title }}</a>.
+        <a class="text-link" href="{% url 'catalog:manga-detail' pk=manga.original_title.id%}">
+          {{ manga.original_title }}
+        </a>.
       </ul>
     {% endfor %}
   {% else %}

@@ -17,9 +17,13 @@
   <p>Translated versions:
     {% for translated in manga.original.all %}
      <ul>
-       <a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=translated.id %}">"{{ translated.translated_title }}"</a>
+       <a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=translated.id %}">
+         "{{ translated.translated_title }}"
+       </a>
        by
-       <a class="text-link" href="{% url 'catalog:translator-detail' pk=translated.translator.id%}">{{ translated.translator }}</a>
+       <a class="text-link" href="{% url 'catalog:translator-detail' pk=translated.translator.id%}">
+         {{ translated.translator }}
+       </a>
      </ul>
     {% endfor %}
   </p>
