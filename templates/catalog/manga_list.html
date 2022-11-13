@@ -2,29 +2,38 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
+  <h1 class="d-inline">
     Manga List
-    <a style="float: right" href="{% url 'catalog:manga-create' %}">Create</a>
   </h1>
+  <a class="d-inline btn-submit" href="{% url 'catalog:manga-create' %}">🖋</a>
 
   <form action="" method="get">
     {{ search_form|crispy }}
-    <input type="submit">
+    <input class="btn-submit" type="submit" value="Search">
   </form>
 
   {% if manga_list %}
-    <ul>
+    <table class="table">
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Mangaka</th>
+      </tr>
       {% for manga in manga_list %}
-        <li>
-          <a href="{% url 'catalog:manga-detail' pk=manga.id %}">{{ manga.title }}</a>
-          ({{ manga.year }}) Created by:{{ manga.mangaka }}. Include {{ manga.chapters }} chapters. Genres:
-          {% for genre in manga.genre.all %}
-            {{ genre.name }},
-          {% endfor %}
-        </li>
+        <tr>
+          <td>
+            <strong><a class="text-link" href="{% url 'catalog:manga-detail' pk=manga.id %}">{{ manga.title }}</a></strong>
+          </td>
+          <td>
+            {{ manga.year }}
+          </td>
+          <td>
+            {{ manga.mangaka }}
+          </td>
+        </tr>
       {% endfor %}
-    </ul>
+    </table>
   {% else %}
-    <p>the are no mangas</p>
+    <p>Unfortunately, there is no mangas here yet.</p>
   {% endif %}
 {% endblock %}

@@ -2,14 +2,15 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
+  <h1 class="d-inline">
     Genres List
-    <a style="float: right" href="{% url 'catalog:genre-create' %}">Create</a>
   </h1>
-
+  <a class="btn-submit d-inline" href="{% url 'catalog:genre-create' %}">🖋</a>
+  <br>
+  <br>
   <form action="" method="get">
     {{ search_form|crispy }}
-    <input type="submit">
+    <input class="btn-submit" type="submit" value="Search">
   </form>
 
   {% if genre_list %}
@@ -21,7 +22,7 @@
       {% for genre in genre_list %}
         <tr>
           <td>
-            <strong><a href="{% url 'catalog:genre-detail' pk=genre.id%}">{{ genre.name }}</a></strong>
+            <strong><a class="text-link" href="{% url 'catalog:genre-detail' pk=genre.id%}">{{ genre.name }}</a></strong>
           </td>
           <td>
             {{ genre.description|slice:53 }}...
@@ -30,7 +31,7 @@
       {% endfor %}
     </table>
   {% else %}
-    <p>the are no genres</p>
+    <p>Unfortunately, there is no genres here yet.</p>
   {% endif %}
 
 {% endblock %}

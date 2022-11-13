@@ -19,9 +19,10 @@ class Genre(models.Model):
 
 class Translator(AbstractUser):
     LANGUAGES = [
-        ("EN", "England"),
-        ("FR", "France"),
-        ("GE", "Germany")
+        ("EN", "english"),
+        ("FR", "french"),
+        ("GE", "german"),
+        ("ES", "spanish")
     ]
     language = models.CharField(max_length=255, choices=LANGUAGES)
 

@@ -2,9 +2,15 @@
 
 {% block content %}
   <h1>
-    Manga: {{ genre.name }}
-    <a style="float: right" href="{% url 'catalog:genre-update' pk=genre.id%}">Update</a>
-    <a style="float: right" href="{% url 'catalog:genre-delete' pk=genre.id%}">Delete</a>
+    Genre: {{ genre.name }}
   </h1>
+  <a class="btn-submit" href="{% url 'catalog:genre-update' pk=genre.id%}">🔄</a>
+  <a class="btn-submit" href="{% url 'catalog:genre-delete' pk=genre.id%}">❌</a>
+  <br><br>
   <p>{{ genre.description }}</p>
+  <p>We have such mangas with this genre:</p>
+  {% for manga in genre.mangas.all %}
+    <ul><strong><a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=manga.id %}">"{{ manga.title }}"</a></strong></ul>
+
+  {% endfor %}
 {% endblock %}

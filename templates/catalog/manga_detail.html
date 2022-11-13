@@ -3,9 +3,10 @@
 {% block content %}
   <h1>
     Manga: {{ manga.title }}({{ manga.year }})
-    <a style="float: right" href="{% url 'catalog:manga-update' pk=manga.id%}">Update</a>
-    <a style="float: right" href="{% url 'catalog:manga-delete' pk=manga.id%}">Delete</a>
   </h1>
+  <a class="btn-submit" href="{% url 'catalog:manga-update' pk=manga.id%}">🔄</a>
+  <a class="btn-submit" href="{% url 'catalog:manga-delete' pk=manga.id%}">❌</a>
+  <br><br>
   <p>Created by: {{ manga.mangaka }}</p>
   <p>Include: {{ manga.chapters }} chapters</p>
   <p>Genres:
@@ -13,9 +14,13 @@
       {{ genre.name }},
     {% endfor %}
   </p>
-  <p>Translated variant:
+  <p>Translated versions:
     {% for translated in manga.original.all %}
-      <li>{{ translated.translated_title }} by {{ translated.translator }}</li>
+     <ul>
+       <a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=translated.id %}">"{{ translated.translated_title }}"</a>
+       by
+       <a class="text-link" href="{% url 'catalog:translator-detail' pk=translated.translator.id%}">{{ translated.translator }}</a>
+     </ul>
     {% endfor %}
   </p>
 {% endblock %}

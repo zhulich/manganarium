@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Translator: {{ translator.username }}</h1>
+  <h1>{{ translator.username }}</h1>
   <p>Translate from japans to {{ translator.language }}</p>
   <p>Staff: {{ translator.is_staff }}</p>
   <p>Works:
   {% if  translator.translated.all%}
     {% for manga in translator.translated.all %}
-      <li>{{ manga.translated_title }}({{ manga.original_title }})</li>
+      <ul>
+        <a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=manga.id%}">{{ manga.translated_title }}</a>
+        translated from
+        <a class="text-link" href="{% url 'catalog:manga-detail' pk=manga.original_title.id%}">{{ manga.original_title }}</a>.
+      </ul>
     {% endfor %}
   {% else %}
     <p>This user still didn't add his works</p>

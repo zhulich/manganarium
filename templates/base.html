@@ -15,7 +15,7 @@
 <body>
   <div class="container-fluid">
     <div class="row ">
-      <div class="col-sm-2 sidebar-nav-left">
+      <div class="col-sm-2">
         {% block sidebar %}
           {% include "includes/sidebar.html" %}
         {% endblock %}
@@ -29,7 +29,7 @@
           {% include "includes/pagination.html" %}
         {% endblock %}
       </div>
-      <div class="col-sm-2 sidebar-nav-right">
+      <div class="col-sm-2">
         {% block sidebar_right %}
           {% include "includes/sidebar_rigth.html" %}
         {% endblock %}
