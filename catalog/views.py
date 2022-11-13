@@ -32,7 +32,7 @@ def index(request):
 
 class GenreListView(generic.ListView):
     model = Genre
-    paginate_by = 5
+    paginate_by = 2
     queryset = Genre.objects.all()
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -79,7 +79,7 @@ class GenreDeleteView(LoginRequiredMixin, generic.DeleteView):
 class MangaListView(generic.ListView):
     model = Manga
     queryset = Manga.objects.prefetch_related("genre")
-    paginate_by = 2
+    paginate_by = 8
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(MangaListView, self).get_context_data(**kwargs)
@@ -125,6 +125,7 @@ class MangaDeleteView(LoginRequiredMixin, generic.DeleteView):
 class TranslatorListView(generic.ListView):
     model = Translator
     queryset = Translator.objects.all()
+    paginate_by = 8
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(TranslatorListView, self).get_context_data(**kwargs)
@@ -162,6 +163,7 @@ class TranslatedMangaListView(generic.ListView):
     template_name = "catalog/translated_manga_list.html"
     context_object_name = "translated_manga_list"
     queryset = TranslatedManga.objects.select_related("original_title", "translator")
+    paginate_by = 8
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(TranslatedMangaListView, self).get_context_data(**kwargs)
