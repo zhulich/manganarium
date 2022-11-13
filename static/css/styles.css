@@ -52,8 +52,9 @@ h1 {
 }
 
 .text-link {
+    color: chocolate;
     text-decoration: none;
-    color: rgb(80, 48, 48);
+    font-weight: bold;
 }
 
 .form-control {
@@ -85,7 +86,7 @@ h1 {
 }
 
 a:hover {
-    color: chocolate;
+    color: rgb(80, 48, 48);
 }
 
 .page-link:hover{
