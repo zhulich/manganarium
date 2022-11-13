@@ -1,9 +1,26 @@
 from django.urls import path
 
-from catalog.views import index, GenreListView, MangaListView, TranslatorListView, TranslatedMangaListView, \
-    MangaDetailView, TranslatorDetailView, TranslatedMangaDetailView, GenreCreateView, GenreUpdateView, GenreDeleteView, \
-    TranslatorCreateView, MangaCreateView, MangaUpdateView, MangaDeleteView, TranslatedMangaCreateView, \
-    TranslatedMangaUpdateView, TranslatedMangaDeleteView, GenreDetailView
+from catalog.views import (
+    index,
+    GenreListView,
+    MangaListView,
+    TranslatorListView,
+    TranslatedMangaListView,
+    MangaDetailView,
+    TranslatorDetailView,
+    TranslatedMangaDetailView,
+    GenreCreateView,
+    GenreUpdateView,
+    GenreDeleteView,
+    TranslatorCreateView,
+    MangaCreateView,
+    MangaUpdateView,
+    MangaDeleteView,
+    TranslatedMangaCreateView,
+    TranslatedMangaUpdateView,
+    TranslatedMangaDeleteView,
+    GenreDetailView,
+)
 
 urlpatterns = [
     path("", index, name="index"),
@@ -19,12 +36,34 @@ urlpatterns = [
     path("mangas/<int:pk>/delete/", MangaDeleteView.as_view(), name="manga-delete"),
     path("translators/", TranslatorListView.as_view(), name="translator-list"),
     path("registrarion/", TranslatorCreateView.as_view(), name="translator-create"),
-    path("translators/<int:pk>/", TranslatorDetailView.as_view(), name="translator-detail"),
-    path("transleted/", TranslatedMangaListView.as_view(), name="translated-manga-list"),
-    path("transleted/create/", TranslatedMangaCreateView.as_view(), name="translated-manga-create"),
-    path("transleted/<int:pk>/", TranslatedMangaDetailView.as_view(), name="translated-manga-detail"),
-    path("transleted/<int:pk>/update/", TranslatedMangaUpdateView.as_view(), name="translated-manga-update"),
-    path("transleted/<int:pk>/delete/", TranslatedMangaDeleteView.as_view(), name="translated-manga-delete"),
+    path(
+        "translators/<int:pk>/",
+        TranslatorDetailView.as_view(),
+        name="translator-detail",
+    ),
+    path(
+        "transleted/", TranslatedMangaListView.as_view(), name="translated-manga-list"
+    ),
+    path(
+        "transleted/create/",
+        TranslatedMangaCreateView.as_view(),
+        name="translated-manga-create",
+    ),
+    path(
+        "transleted/<int:pk>/",
+        TranslatedMangaDetailView.as_view(),
+        name="translated-manga-detail",
+    ),
+    path(
+        "transleted/<int:pk>/update/",
+        TranslatedMangaUpdateView.as_view(),
+        name="translated-manga-update",
+    ),
+    path(
+        "transleted/<int:pk>/delete/",
+        TranslatedMangaDeleteView.as_view(),
+        name="translated-manga-delete",
+    ),
 ]
 
 app_name = "catalog"

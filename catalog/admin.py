@@ -28,6 +28,6 @@ class TranslatedMangaAdmin(admin.ModelAdmin):
 class TranslatorAdmin(UserAdmin):
     list_display = ("username", "email", "is_staff", "language")
     fieldsets = UserAdmin.fieldsets + (("Additional info", {"fields": ("language",)}),)
-    add_fieldsets = UserAdmin.add_fieldsets + (("Additional info", {"fields": ("language", "first_name", "last_name")}),)
-
-
+    add_fieldsets = UserAdmin.add_fieldsets + (
+        ("Additional info", {"fields": ("language", "first_name", "last_name")}),
+    )

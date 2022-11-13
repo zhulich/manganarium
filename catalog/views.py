@@ -3,8 +3,14 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from catalog.forms import TranslatorCreationFrom, MangaForm, MangaSearchForm, TranslatorSearchForm, \
-    TranslatedMangaSearchForm, GenreSearchForm
+from catalog.forms import (
+    TranslatorCreationFrom,
+    MangaForm,
+    MangaSearchForm,
+    TranslatorSearchForm,
+    TranslatedMangaSearchForm,
+    GenreSearchForm,
+)
 from catalog.models import Translator, Manga, TranslatedManga, Genre
 
 
@@ -40,9 +46,7 @@ class GenreListView(generic.ListView):
 
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = GenreSearchForm(initial={
-            "name": name
-        })
+        context["search_form"] = GenreSearchForm(initial={"name": name})
 
         return context
 
@@ -86,9 +90,7 @@ class MangaListView(generic.ListView):
 
         title = self.request.GET.get("title", "")
 
-        context["search_form"] = MangaSearchForm(initial={
-            "title": title
-        })
+        context["search_form"] = MangaSearchForm(initial={"title": title})
 
         return context
 
@@ -132,9 +134,7 @@ class TranslatorListView(generic.ListView):
 
         username = self.request.GET.get("username", "")
 
-        context["search_form"] = TranslatorSearchForm(initial={
-            "username": username
-        })
+        context["search_form"] = TranslatorSearchForm(initial={"username": username})
 
         return context
 
@@ -143,7 +143,8 @@ class TranslatorListView(generic.ListView):
 
         if form.is_valid():
             return self.queryset.filter(
-                username__icontains=form.cleaned_data["username"])
+                username__icontains=form.cleaned_data["username"]
+            )
 
         return self.queryset
 
@@ -170,9 +171,9 @@ class TranslatedMangaListView(generic.ListView):
 
         translated_title = self.request.GET.get("translated_title", "")
 
-        context["search_form"] = TranslatedMangaSearchForm(initial={
-            "translated_title": translated_title
-        })
+        context["search_form"] = TranslatedMangaSearchForm(
+            initial={"translated_title": translated_title}
+        )
 
         return context
 
@@ -181,7 +182,8 @@ class TranslatedMangaListView(generic.ListView):
 
         if form.is_valid():
             return self.queryset.filter(
-                translated_title__icontains=form.cleaned_data["translated_title"])
+                translated_title__icontains=form.cleaned_data["translated_title"]
+            )
 
         return self.queryset
 
@@ -210,6 +212,3 @@ class TranslatedMangaDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = TranslatedManga
     template_name = "catalog/translated_manga_confirm_delete.html"
     success_url = reverse_lazy("catalog:translated-manga-list")
-
-
-

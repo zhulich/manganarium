@@ -28,7 +28,7 @@ class PublicGenreTests(TestCase):
             "username": "username",
             "password1": "123PassWord1234",
             "password2": "123PassWord1234",
-            "language": "EN"
+            "language": "EN",
         }
         self.client.post(reverse("catalog:translator-create"), data=form_data)
         translator = Translator.objects.get(username=form_data["username"])
@@ -40,9 +40,7 @@ class PublicGenreTests(TestCase):
 
 class PrivateGenreTests(TestCase):
     def setUp(self) -> None:
-        self.user = get_user_model().objects.create_user(
-            "test", "Password1234"
-        )
+        self.user = get_user_model().objects.create_user("test", "Password1234")
         self.client.force_login(self.user)
 
     def test_login_required(self):
@@ -51,10 +49,7 @@ class PrivateGenreTests(TestCase):
         self.assertEqual(resp.status_code, 200)
 
     def test_create_genre(self):
-        form_data = {
-            "name": "Test",
-            "description": "test, test"
-        }
+        form_data = {"name": "Test", "description": "test, test"}
         self.client.post(GENRE_CREATE_URL, data=form_data)
         genre = Genre.objects.get(name=form_data["name"])
 

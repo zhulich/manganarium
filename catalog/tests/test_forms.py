@@ -9,7 +9,7 @@ class FormsTests(TestCase):
             "username": "username",
             "password1": "123PassWord1234",
             "password2": "123PassWord1234",
-            "language": "EN"
+            "language": "EN",
         }
         form = TranslatorCreationFrom(data=form_data)
         self.assertTrue(form.is_valid())
@@ -20,9 +20,7 @@ class FormsTests(TestCase):
             "username": "username",
             "password1": "123PassWord1234",
             "password2": "123PassWord1234",
-            "language": "UA"
+            "language": "UA",
         }
         form = TranslatorCreationFrom(data=form_data)
         self.assertFalse(form.is_valid())
-
-

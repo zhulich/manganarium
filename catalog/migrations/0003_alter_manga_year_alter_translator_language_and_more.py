@@ -7,22 +7,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalog', '0002_alter_manga_genre_alter_manga_translator_and_more'),
+        ("catalog", "0002_alter_manga_genre_alter_manga_translator_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='manga',
-            name='year',
-            field=models.IntegerField(validators=[django.core.validators.MinValueValidator(1950), django.core.validators.MaxValueValidator(2030)]),
+            model_name="manga",
+            name="year",
+            field=models.IntegerField(
+                validators=[
+                    django.core.validators.MinValueValidator(1950),
+                    django.core.validators.MaxValueValidator(2030),
+                ]
+            ),
         ),
         migrations.AlterField(
-            model_name='translator',
-            name='language',
-            field=models.CharField(choices=[('UA', 'Ukraine'), ('EN', 'England'), ('FR', 'France'), ('GE', 'Germany')], max_length=255),
+            model_name="translator",
+            name="language",
+            field=models.CharField(
+                choices=[
+                    ("UA", "Ukraine"),
+                    ("EN", "England"),
+                    ("FR", "France"),
+                    ("GE", "Germany"),
+                ],
+                max_length=255,
+            ),
         ),
         migrations.AddConstraint(
-            model_name='translatedmanga',
-            constraint=models.UniqueConstraint(fields=('original_title', 'translator'), name='unique_translate'),
+            model_name="translatedmanga",
+            constraint=models.UniqueConstraint(
+                fields=("original_title", "translator"), name="unique_translate"
+            ),
         ),
     ]

@@ -7,28 +7,40 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalog', '0001_initial'),
+        ("catalog", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='manga',
-            name='genre',
-            field=models.ManyToManyField(related_name='mangas', to='catalog.genre'),
+            model_name="manga",
+            name="genre",
+            field=models.ManyToManyField(related_name="mangas", to="catalog.genre"),
         ),
         migrations.AlterField(
-            model_name='manga',
-            name='translator',
-            field=models.ManyToManyField(related_name='mangas', to=settings.AUTH_USER_MODEL),
+            model_name="manga",
+            name="translator",
+            field=models.ManyToManyField(
+                related_name="mangas", to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AlterField(
-            model_name='translatedmanga',
-            name='original_title',
-            field=models.ForeignKey(null=True, on_delete=models.SET('unknown'), related_name='translated', to='catalog.manga'),
+            model_name="translatedmanga",
+            name="original_title",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=models.SET("unknown"),
+                related_name="translated",
+                to="catalog.manga",
+            ),
         ),
         migrations.AlterField(
-            model_name='translatedmanga',
-            name='translator',
-            field=models.ForeignKey(null=True, on_delete=models.SET('unknown'), related_name='translated', to=settings.AUTH_USER_MODEL),
+            model_name="translatedmanga",
+            name="translator",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=models.SET("unknown"),
+                related_name="translated",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

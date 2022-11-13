@@ -15,14 +15,10 @@ class MangaForm(forms.ModelForm):
     genre = forms.ModelMultipleChoiceField(
         queryset=Genre.objects.all(),
         widget=forms.CheckboxSelectMultiple,
-        required=False
+        required=False,
     )
-    year = forms.CharField(
-        required=False
-    )
-    chapters = forms.CharField(
-        required=False
-    )
+    year = forms.CharField(required=False)
+    chapters = forms.CharField(required=False)
 
     class Meta:
         model = Manga
@@ -34,7 +30,7 @@ class MangaSearchForm(forms.Form):
         max_length=63,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by title..."})
+        widget=forms.TextInput(attrs={"placeholder": "Search by title..."}),
     )
 
 
@@ -43,7 +39,7 @@ class TranslatedMangaSearchForm(forms.Form):
         max_length=63,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by title..."})
+        widget=forms.TextInput(attrs={"placeholder": "Search by title..."}),
     )
 
 
@@ -52,7 +48,7 @@ class TranslatorSearchForm(forms.Form):
         max_length=63,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by nickname..."})
+        widget=forms.TextInput(attrs={"placeholder": "Search by nickname..."}),
     )
 
 
@@ -61,5 +57,5 @@ class GenreSearchForm(forms.Form):
         max_length=63,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by genre..."})
+        widget=forms.TextInput(attrs={"placeholder": "Search by genre..."}),
     )
