@@ -17,8 +17,8 @@ class MangaForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
-    year = forms.CharField(required=False)
-    chapters = forms.CharField(required=False)
+    year = forms.IntegerField(required=False)
+    chapters = forms.IntegerField(required=False)
 
     class Meta:
         model = Manga
