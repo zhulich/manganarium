@@ -5,7 +5,7 @@ Django project for managing original and translated into another languages manga
 
 ## Check it out!
 
-[Manganarium project deployed to ###]
+[Manganarium project deployed to Render](https://manganarium.onrender.com/)
 
 ## Installation
 
