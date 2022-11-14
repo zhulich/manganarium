@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    Translator List
+  </h1>
+
+  <form action="" method="get">
+    {{ search_form|crispy }}
+    <input class="btn-submit" type="submit" value="Search">
+  </form>
+
+  {% if translator_list %}
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Language</th>
+        <th>Projects</th>
+      </tr>
+      {% for translator in translator_list %}
+        <tr>
+          <td>
+            <strong>
+              <a class="text-link" href="{% url 'catalog:translator-detail' pk=translator.id%}">
+                {{ translator.username }}
+              </a></strong>
+          </td>
+          <td>
+            {{ translator.language }}
+          </td>
+          <td>
+            {% if translator.translated.all%}
+              {% for translate in translator.translated.all %}
+                <a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=translate.id%}">
+                  {{ translate.translated_title }},
+                </a>
+              {% endfor %}
+            {% else %}
+              No works.
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Unfortunately, there is no translators here yet.</p>
+  {% endif %}
+{% endblock %}

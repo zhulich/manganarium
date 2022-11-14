@@ -1,0 +1,11 @@
+<ul>
+  {% if user.is_authenticated %}
+    <li class="list-group-item">
+      User: <a class="text-link" href="{% url 'catalog:translator-detail' pk=user.id %}">{{ user.username }}</a>
+    </li>
+    <li class="list-group-item"><a class="text-link" href="{% url 'logout' %}">Log out</a></li>
+  {% else %}
+    <li class="list-group-item"><a class="text-link" href="{% url 'catalog:translator-create' %}">Registration</a></li>
+    <li class="list-group-item"><a class="text-link" href="{% url 'login' %}">Login</a></li>
+  {% endif %}
+</ul>

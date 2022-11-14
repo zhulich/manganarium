@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+
+  {% if user.is_authenticated %}
+    <h1>Update your data</h1>
+  {% else %}
+    <h1>Fill in your data</h1>
+  {% endif %}
+
+  <form action="" method="post" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+
+
+    <input class="btn-submit" type="submit" value="Submit">
+  </form>
+{% endblock %}
+
+

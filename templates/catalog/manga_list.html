@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1 class="d-inline">
+    Manga List
+  </h1>
+  <a class="d-inline btn-submit" href="{% url 'catalog:manga-create' %}">🖋</a>
+
+  <form action="" method="get">
+    {{ search_form|crispy }}
+    <input class="btn-submit" type="submit" value="Search">
+  </form>
+
+  {% if manga_list %}
+    <table class="table">
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Mangaka</th>
+      </tr>
+      {% for manga in manga_list %}
+        <tr>
+          <td>
+            <strong><a class="text-link" href="{% url 'catalog:manga-detail' pk=manga.id %}">{{ manga.title }}</a></strong>
+          </td>
+          <td>
+            {{ manga.year }}
+          </td>
+          <td>
+            {{ manga.mangaka }}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Unfortunately, there is no mangas here yet.</p>
+  {% endif %}
+{% endblock %}

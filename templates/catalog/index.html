@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Home Page</title>
+{% endblock %}
+
+{% block content %}
+  <h1>Welcome to Manganarium</h1>
+  <p>We hope you will enjoy your stay on our website.</p>
+  <p>Here is what we have prepared for you</p>
+  <ul>
+    <li>Num of <a class="text-link" href="{% url 'catalog:genre-list' %}">genres</a>: {{ num_genre }}.</li>
+    <li>Num of <a class="text-link" href="{% url 'catalog:manga-list' %}">mangas</a>: {{ num_manga }}.</li>
+    <li>Num of <a class="text-link" href="{% url 'catalog:translated-manga-list' %}">translated manga</a>: {{ num_translated }}.</li>
+    <li>Num of <a class="text-link" href="{% url 'catalog:translator-list' %}">translator</a>: {{ num_translator }}.</li>
+  </ul>
+
+  <p>You visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>
+{% endblock %}
