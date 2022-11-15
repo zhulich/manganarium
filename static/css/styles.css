@@ -39,7 +39,7 @@ body{
 }
 
 .btn-submit {
-    background: rgb(80, 48, 48);
+    background :chocolate;
     border-radius: 8px;
     color: black;
     text-decoration: none;
@@ -58,7 +58,7 @@ h1 {
 }
 
 .form-control {
-    background-color: chocolate;
+    background-color: darkolivegreen;
     border: 1px solid black ;
 }
 
@@ -68,7 +68,7 @@ h1 {
 }
 
 .form-select {
-    background-color: chocolate;
+    background-color: darkolivegreen;
     border: 1px solid black ;
 }
 
@@ -79,7 +79,7 @@ h1 {
 }
 
 .page-link {
-    background-color: chocolate;
+    background-color: darkolivegreen;
     border-color: black;
     color: black;
     -webkit-tap-highlight-color: black;
