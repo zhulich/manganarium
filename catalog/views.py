@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -125,7 +126,7 @@ class MangaDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 class TranslatorListView(generic.ListView):
-    model = Translator
+    model = get_user_model()
     queryset = Translator.objects.all()
     paginate_by = 8
 
@@ -150,11 +151,11 @@ class TranslatorListView(generic.ListView):
 
 
 class TranslatorDetailView(generic.DetailView):
-    model = Translator
+    model = get_user_model()
 
 
 class TranslatorCreateView(generic.CreateView):
-    model = Translator
+    model = get_user_model()
     form_class = TranslatorCreationFrom
     success_url = reverse_lazy("catalog:index")
 
