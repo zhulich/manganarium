@@ -37,12 +37,17 @@ class Manga(models.Model):
     title = models.CharField(max_length=63, unique=True)
     mangaka = models.CharField(max_length=255)
     year = models.IntegerField(
-        validators=[MinValueValidator(1950), MaxValueValidator(2030)]
+        validators=[MinValueValidator(1950), MaxValueValidator(2022)],
+        help_text="Enter year between 1950 and 2022",
+        default=2022
     )
     chapters = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(100)]
+        validators=[MinValueValidator(1), MaxValueValidator(100)],
+        help_text="Enter number of chapters between 1 and 100",
+        default=99
     )
     genre = models.ManyToManyField(Genre, related_name="mangas")
+
 
     class Meta:
         ordering = ["title"]

@@ -5,6 +5,10 @@ from django.contrib.auth.models import User
 from catalog.models import Translator, Manga, Genre, TranslatedManga
 
 
+YEAR_CHOICES = [(i, i) for i in range(1950, 2023)]
+CHAPTERS_CHOICES = [(i, i) for i in range(1, 100)]
+
+
 class TranslatorCreationFrom(UserCreationForm):
     class Meta:
         model = Translator
@@ -17,8 +21,8 @@ class MangaForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
-    year = forms.IntegerField(required=False)
-    chapters = forms.IntegerField(required=False)
+    year = forms.ChoiceField(required=False, choices=YEAR_CHOICES)
+    chapters = forms.ChoiceField(required=False, choices=CHAPTERS_CHOICES)
 
     class Meta:
         model = Manga
