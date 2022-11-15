@@ -58,7 +58,7 @@ h1 {
 }
 
 .form-control {
-    background-color: darkolivegreen;
+    background-color: chocolate;
     border: 1px solid black ;
 }
 
@@ -68,7 +68,7 @@ h1 {
 }
 
 .form-select {
-    background-color: darkolivegreen;
+    background-color: chocolate;
     border: 1px solid black ;
 }
 
@@ -79,7 +79,7 @@ h1 {
 }
 
 .page-link {
-    background-color: darkolivegreen;
+    background-color: chocolate;
     border-color: black;
     color: black;
     -webkit-tap-highlight-color: black;
