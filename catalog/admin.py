@@ -12,8 +12,8 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(Manga)
 class MangaAdmin(admin.ModelAdmin):
-    list_display = ["title", "mangaka", "year", "chapters"]
-    list_filter = ["mangaka", "year", "genre"]
+    list_display = ["title", "mangaka", "published", "chapters"]
+    list_filter = ["mangaka", "published", "genre"]
     search_fields = ["title"]
 
 

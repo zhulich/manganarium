@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>
-    Manga: {{ manga.title }}({{ manga.year }})
+    Manga: {{ manga.title }}({{ manga.published }})
   </h1>
   <a class="btn-submit" href="{% url 'catalog:manga-update' pk=manga.id%}">🔄</a>
   <a class="btn-submit" href="{% url 'catalog:manga-delete' pk=manga.id%}">❌</a>

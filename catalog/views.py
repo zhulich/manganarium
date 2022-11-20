@@ -39,7 +39,7 @@ def index(request):
 
 class GenreListView(generic.ListView):
     model = Genre
-    paginate_by = 2
+    paginate_by = 4
     queryset = Genre.objects.all()
 
     def get_context_data(self, *, object_list=None, **kwargs):

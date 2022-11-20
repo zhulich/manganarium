@@ -2,10 +2,8 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from django.db.models import UniqueConstraint
 
 
-# Create your models here.
 class Genre(models.Model):
     name = models.CharField(max_length=63, unique=True)
     description = models.TextField()
@@ -36,7 +34,7 @@ class Translator(AbstractUser):
 class Manga(models.Model):
     title = models.CharField(max_length=63, unique=True)
     mangaka = models.CharField(max_length=255)
-    year = models.IntegerField(
+    published = models.IntegerField(
         validators=[MinValueValidator(1950), MaxValueValidator(2022)],
         help_text="Enter year between 1950 and 2022",
         default=2022
@@ -48,12 +46,11 @@ class Manga(models.Model):
     )
     genre = models.ManyToManyField(Genre, related_name="mangas")
 
-
     class Meta:
         ordering = ["title"]
 
     def __str__(self):
-        return f"{self.title}, {self.year}"
+        return f"{self.title}, {self.published}"
 
 
 class TranslatedManga(models.Model):
