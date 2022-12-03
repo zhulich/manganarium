@@ -1,8 +1,7 @@
 from django import forms
-from django.conf import settings
 from django.contrib.auth.forms import UserCreationForm
 
-from catalog.models import Translator, Manga, Genre, TranslatedManga
+from catalog.models import Translator, Manga, Genre
 
 
 PUBLISHED_CHOICES = [(i, i) for i in range(1950, 2023)]
