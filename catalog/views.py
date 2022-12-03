@@ -197,9 +197,13 @@ class TranslatedMangaDetailView(generic.DetailView):
 
 class TranslatedMangaCreateView(LoginRequiredMixin, generic.CreateView):
     model = TranslatedManga
-    fields = "__all__"
+    fields = ("original_title", "translated_title")
     template_name = "catalog/translated_manga_form.html"
     success_url = reverse_lazy("catalog:translated-manga-list")
+
+    def form_valid(self, form):
+        form.instance.translator = self.request.user
+        return super().form_valid(form)
 
 
 class TranslatedMangaUpdateView(LoginRequiredMixin, generic.UpdateView):
