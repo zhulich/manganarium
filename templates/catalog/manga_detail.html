@@ -15,6 +15,7 @@
     {% endfor %}
   </p>
   <p>Translated versions:
+  {% if manga.original.all %}
     {% for translated in manga.original.all %}
      <ul>
        <a class="text-link" href="{% url 'catalog:translated-manga-detail' pk=translated.id %}">
@@ -26,6 +27,9 @@
        </a>
      </ul>
     {% endfor %}
+  {% else %}
+    <p>Unfortunately, there are no translated versions yet</p>
+  {% endif %}
   </p>
 {% endblock %}
 

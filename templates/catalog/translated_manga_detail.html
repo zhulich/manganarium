@@ -11,12 +11,15 @@
   <br>
   <br>
   <p> This manga in {{ translated_manga_detail.translator.language }} language.</p>
-  <p>Original story {{ translated_manga_detail.original_title }} by {{ translated_manga_detail.original_title.mangaka }}.</p>
+  <p>Original story
+    <a class="text-link" href="{% url 'catalog:manga-detail' pk=translated_manga_detail.original_title.id %}">
+    {{ translated_manga_detail.original_title }}</a> by {{ translated_manga_detail.original_title.mangaka }}.</p>
   <p>
     By<a class="text-link" href="{% url 'catalog:translator-detail' pk=translated_manga_detail.translator.id%}">
     {{ translated_manga_detail.translator }}</a>.
   </p>
   <p>Another translation:</p>
+  {% if translated_manga_detail.original_title.original.all > 1 %}
       {% for manga in translated_manga_detail.original_title.original.all %}
         {% if manga.id != translated_manga_detail.id %}
           <ul>
@@ -25,6 +28,9 @@
           </ul>
         {% endif %}
       {% endfor %}
+  {% else %}
+    <p>Unfortunately, there are no other translated versions yet</p>
+  {% endif %}
   </p>
 {% endblock %}
 
